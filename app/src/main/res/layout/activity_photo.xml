@@ -30,10 +30,10 @@
         android:id="@+id/etDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btnTake"
+        android:layout_below="@+id/ivPicture"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="Description..."
         android:inputType="textMultiLine"
@@ -53,5 +53,14 @@
         android:layout_marginTop="106dp"
         android:backgroundTint="@color/pinkI"
         android:text="Submit" />
+
+    <ImageView
+        android:id="@+id/ivPicture"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@+id/btnTake"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        tools:srcCompat="@tools:sample/avatars" />
 
 </RelativeLayout>
