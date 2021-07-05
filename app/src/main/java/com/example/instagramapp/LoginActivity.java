@@ -6,8 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.instagramapp.databinding.ActivityLoginBinding;
@@ -16,10 +14,6 @@ import com.parse.ParseException;
 import com.parse.ParseUser;
 
 public class LoginActivity extends AppCompatActivity {
-
-    private EditText etUsername;
-    private EditText etPassword;
-    private Button btnLogin;
     private String TAG = "LoginActivity";
 
     @Override
@@ -33,16 +27,13 @@ public class LoginActivity extends AppCompatActivity {
         if (ParseUser.getCurrentUser()!= null){
             goMainActivity();
         }
-        etUsername = binding.etUsername;
-        etPassword = binding.etPassword;
-        btnLogin = binding.btnLogin;
 
         //Setting the on click listener for th login button
-        btnLogin.setOnClickListener(new View.OnClickListener() {
+        binding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = etUsername.getText().toString();
-                String password = etPassword.getText().toString();
+                String username = binding.etUsername.getText().toString();
+                String password = binding.etPassword.getText().toString();
 
                 // Verification to see if the username or the password is empty
                 if (username.isEmpty() || password.isEmpty()){
@@ -52,6 +43,13 @@ public class LoginActivity extends AppCompatActivity {
                 Log.i(TAG, "onClick login button");
                 // Method to login
                 loginUser(username, password);
+            }
+        });
+
+        binding.btnSign.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(LoginActivity.this, "New user", Toast.LENGTH_SHORT).show();
             }
         });
     }
