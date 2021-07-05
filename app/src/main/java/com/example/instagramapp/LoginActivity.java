@@ -27,6 +27,9 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ActivityLoginBinding binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        //Checking if a user has already logged in to open the app in the main activity
+        // Instead of login activity
         if (ParseUser.getCurrentUser()!= null){
             goMainActivity();
         }
@@ -55,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void loginUser(String username, String password) {
         Log.i(TAG, " Attempting to login user " + username);
-        // Login code
+        // Navigate to the main activity if the user has logged in properly
         ParseUser.logInInBackground(username, password, new LogInCallback() {
             @Override
             public void done(ParseUser user, ParseException e) {
