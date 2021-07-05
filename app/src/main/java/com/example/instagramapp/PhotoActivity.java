@@ -2,20 +2,22 @@ package com.example.instagramapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.instagramapp.databinding.ActivityPhotoBinding;
 import com.parse.FindCallback;
 import com.parse.ParseException;
-import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
+import java.io.File;
 import java.util.List;
 
 public class PhotoActivity extends AppCompatActivity {
@@ -30,7 +32,21 @@ public class PhotoActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.photoToolbar);
         setSupportActionBar(toolbar);
 
-        queryPosts();
+        //queryPosts();
+
+        binding.btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Save post
+            }
+        });
+
+        binding.btnTake.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Launch camera
+            }
+        });
 
     }
 
