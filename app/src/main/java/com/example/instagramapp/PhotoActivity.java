@@ -58,7 +58,7 @@ public class PhotoActivity extends AppCompatActivity {
                     return;
                 }
                 ParseUser currentUser = ParseUser.getCurrentUser();
-                savePost(description, currentUser, binding);
+                savePost(description, currentUser, photoFile, binding);
             }
         });
 
@@ -72,9 +72,10 @@ public class PhotoActivity extends AppCompatActivity {
 
     }
 
-    private void savePost(String description, ParseUser currentUser, ActivityPhotoBinding binding) {
+    private void savePost(String description, ParseUser currentUser, File photoFile, ActivityPhotoBinding binding) {
         Post post = new Post();
         post.setDescription(description);
+        post.setImage(new ParseFile(photoFile));
         post.setUser(currentUser);
         post.saveInBackground(new SaveCallback() {
             @Override
