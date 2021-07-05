@@ -1,9 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    android:background="@color/black"
+    tools:context=".MainActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:navigationIcon="@drawable/ic_instagram_wordmark_white">
+
+    </Toolbar>
+
+    <EditText
+        android:id="@+id/etUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/icon"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="15dp"
+        android:ems="10"
+        android:hint="@string/username"
+        android:inputType="textPersonName"
+        android:textColor="@color/white"
+        android:textColorHighlight="@color/pinkI"
+        android:textColorHint="@android:color/darker_gray"
+        android:textColorLink="@color/pinkI"
+        android:textCursorDrawable="@color/pinkI" />
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etUsername"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        android:ems="10"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:textColor="@color/white"
+        android:textColorHighlight="@color/pinkI"
+        android:textColorHint="@android:color/darker_gray"
+        android:textColorLink="@color/pinkI"
+        android:textCursorDrawable="@color/pinkI"
+        app:layout_constraintTop_toBottomOf="@+id/etUsername" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="162dp"
+        android:layout_marginTop="29dp"
+        android:text="@string/login"
+        app:backgroundTint="@color/pinkI"
+        tools:layout_editor_absoluteY="198dp">
+
+    </com.google.android.material.button.MaterialButton>
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="154dp"
+        app:srcCompat="@drawable/ic_instagram_wordmark_white" />
+
+</RelativeLayout>
