@@ -28,16 +28,20 @@ public class LoginActivity extends AppCompatActivity {
         etPassword = binding.etPassword;
         btnLogin = binding.btnLogin;
 
+        //Setting the on click listener for th login button
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String username = etUsername.getText().toString();
                 String password = etPassword.getText().toString();
+
+                // Verification to see if the username or the password is empty
                 if (username.isEmpty() || password.isEmpty()){
                     Toast.makeText(LoginActivity.this, "It can't be empty", Toast.LENGTH_LONG).show();
                     return;
                 }
                 Log.i(TAG, "onClick login button");
+                // Method to login
                 loginUser(username, password);
             }
         });
@@ -45,5 +49,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private void loginUser(String username, String password) {
         Log.i(TAG, " Attempting to login user " + username);
+        // Login code
     }
 }
