@@ -72,11 +72,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/toolbar"
-        android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="43dp"
         android:layout_marginTop="15dp"
-        android:layout_marginEnd="154dp"
         app:srcCompat="@drawable/ic_instagram_wordmark_white" />
 
 </RelativeLayout>
