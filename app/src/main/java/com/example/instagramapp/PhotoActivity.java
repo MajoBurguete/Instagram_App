@@ -20,6 +20,7 @@ public class PhotoActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         Toolbar toolbar = findViewById(R.id.photoToolbar);
         setSupportActionBar(toolbar);
+
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
