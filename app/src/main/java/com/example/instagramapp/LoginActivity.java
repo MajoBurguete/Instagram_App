@@ -2,6 +2,7 @@ package com.example.instagramapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,7 +11,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.instagramapp.databinding.ActivityLoginBinding;
-import com.example.instagramapp.databinding.ActivityMainBinding;
+import com.parse.LogInCallback;
+import com.parse.ParseException;
+import com.parse.ParseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -24,6 +27,9 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ActivityLoginBinding binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        if (ParseUser.getCurrentUser()!= null){
+            goMainActivity();
+        }
         etUsername = binding.etUsername;
         etPassword = binding.etPassword;
         btnLogin = binding.btnLogin;
@@ -50,5 +56,22 @@ public class LoginActivity extends AppCompatActivity {
     private void loginUser(String username, String password) {
         Log.i(TAG, " Attempting to login user " + username);
         // Login code
+        ParseUser.logInInBackground(username, password, new LogInCallback() {
+            @Override
+            public void done(ParseUser user, ParseException e) {
+                if(e != null){
+                    Log.e(TAG, "Failed to login", e);
+                    return;
+                }
+                goMainActivity();
+                Toast.makeText(LoginActivity.this, "Success!", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void goMainActivity() {
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
+        finish();
     }
 }
