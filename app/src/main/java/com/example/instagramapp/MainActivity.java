@@ -22,9 +22,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        setContentView(binding.getRoot());
         //Setting the bottom navigation listener
         bottomItemSelected(binding);
     }
@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
         if (item.getItemId() == R.id.photo){
             Intent takeP = new Intent(MainActivity.this, PhotoActivity.class);
+            startActivity(takeP);
         }
         return true;
     }
