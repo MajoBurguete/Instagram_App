@@ -53,7 +53,7 @@
         android:textCursorDrawable="@color/pinkI"
         app:layout_constraintTop_toBottomOf="@+id/etUsername" />
 
-    <com.google.android.material.button.MaterialButton
+    <Button
         android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
         app:backgroundTint="@color/pinkI"
         tools:layout_editor_absoluteY="198dp">
 
-    </com.google.android.material.button.MaterialButton>
+    </Button>
 
     <ImageView
         android:id="@+id/icon"
