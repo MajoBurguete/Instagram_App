@@ -24,23 +24,23 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setContentView(binding.getRoot());
+        //Setting the bottom navigation listener
+        bottomItemSelected(binding);
+    }
 
+    private void bottomItemSelected(ActivityMainBinding binding) {
         binding.bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                bottomItemSelected(item);
+                if (item.getItemId() == R.id.logout){
+                    ParseUser.logOut();
+                    ParseUser currentUser = ParseUser.getCurrentUser();
+                }
+                Intent j = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(j);
+                finish();
                 return true;
             }
         });
-    }
-
-    private void bottomItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.logout){
-            ParseUser.logOut();
-            ParseUser currentUser = ParseUser.getCurrentUser();
-        }
-        Intent j = new Intent(this, LoginActivity.class);
-        startActivity(j);
-        finish();
     }
 }
