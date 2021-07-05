@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import androidx.appcompat.widget.Toolbar;
@@ -26,6 +27,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         //Setting the bottom navigation listener
         bottomItemSelected(binding);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
     }
 
     private void bottomItemSelected(ActivityMainBinding binding) {
