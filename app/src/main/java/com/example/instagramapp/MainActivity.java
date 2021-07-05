@@ -35,6 +35,13 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    public boolean onOptionsItemSelected(MenuItem item){
+        if (item.getItemId() == R.id.photo){
+            Intent takeP = new Intent(MainActivity.this, PhotoActivity.class);
+        }
+        return true;
+    }
+
     private void bottomItemSelected(ActivityMainBinding binding) {
         binding.bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
