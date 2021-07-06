@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:background="@color/black">
 
     <ImageView
         android:id="@+id/ivPict"
@@ -27,6 +27,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="7dp"
         android:layout_marginTop="21dp"
+        android:textColor="@color/white"
         tools:text="Dore_burguete" />
 
     <TextView
@@ -38,5 +39,6 @@
         android:layout_marginStart="7dp"
         android:layout_marginTop="11dp"
         android:layout_marginEnd="7dp"
+        android:textColor="@color/white"
         tools:text="dore_burguete Hi! this is my new account" />
 </RelativeLayout>
