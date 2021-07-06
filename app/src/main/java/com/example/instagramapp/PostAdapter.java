@@ -31,6 +31,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull PostAdapter.ViewHolder holder, int position) {
+        Post post = rvPosts.get(position);
+        holder.bind(post);
     }
 
     @Override
@@ -49,6 +51,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             tvUsername = itemView.findViewById(R.id.tvUsername);
             tvBody = itemView.findViewById(R.id.tvBody);
             ivPict = itemView.findViewById(R.id.ivPict);
+        }
+
+        public void bind(Post post) {
         }
     }
 }
