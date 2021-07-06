@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
@@ -54,6 +56,11 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         }
 
         public void bind(Post post) {
+            tvUsername.setText(post.getUser().getUsername());
+            if (post.getImage() != null){
+                Glide.with(context).load(post.getImage().getUrl()).into(ivPict);
+                tvBody.setText(post.getDescription());
+            }
         }
     }
 }
