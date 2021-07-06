@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcel;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -12,6 +13,8 @@ import com.example.instagramapp.databinding.ActivitySignupBinding;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
+
+import org.parceler.Parcels;
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -55,6 +58,7 @@ public class SignupActivity extends AppCompatActivity {
                             return;
                         }
                         Intent result = new Intent();
+                        result.putExtra("user", Parcels.wrap(user));
                         setResult(RESULT_OK,result);
                         finish();
                     }
