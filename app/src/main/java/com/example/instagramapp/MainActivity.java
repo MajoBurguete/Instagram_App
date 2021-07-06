@@ -8,15 +8,22 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.instagramapp.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.parse.ParseUser;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     private String TAG = "MainActivity";
+    RecyclerView rvPosts;
+    List<Post> posts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +34,19 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         //Setting the bottom navigation listener
         bottomItemSelected(binding);
+
+        // Defining the posts list
+        posts = new ArrayList<>();
+
+        // Defining the recycler view
+        rvPosts = binding.rvPosts;
+
+        // Creating the adapter
+        PostAdapter postAdapter = new PostAdapter( this, posts);
+
+        // Defining the recycler view adapter and layout manager
+        rvPosts.setLayoutManager(new LinearLayoutManager(this));
+        rvPosts.setAdapter(postAdapter);
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
