@@ -1,5 +1,6 @@
 package com.example.instagramapp;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -12,6 +13,8 @@ import com.example.instagramapp.databinding.ActivityLoginBinding;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
+
+import org.parceler.Parcels;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -54,6 +57,17 @@ public class LoginActivity extends AppCompatActivity {
                 startActivityForResult(sign, REQUEST_CODE_SIGN);
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == REQUEST_CODE_SIGN && resultCode == RESULT_OK){
+            String username = data.getStringExtra("username");
+            String password = data.getStringExtra("password");
+            Toast.makeText(LoginActivity.this, "Account created successfully", Toast.LENGTH_LONG).show();
+            loginUser(username, password);
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     private void loginUser(String username, String password) {
