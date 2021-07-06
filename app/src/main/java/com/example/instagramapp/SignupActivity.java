@@ -1,6 +1,7 @@
 package com.example.instagramapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,6 +26,8 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ActivitySignupBinding binding = ActivitySignupBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        Toolbar toolbar = binding.ToolbarSign;
+        setSupportActionBar(toolbar);
 
         binding.btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
