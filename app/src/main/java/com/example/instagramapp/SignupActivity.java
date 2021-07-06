@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -69,8 +71,18 @@ public class SignupActivity extends AppCompatActivity {
                 });
             }
         });
+    }
 
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_signup, menu);
+        return true;
+    }
 
-
+    public boolean onOptionsItemSelected(MenuItem item){
+        if (item.getItemId() == R.id.btnReturnL){
+            finish();
+        }
+        return true;
     }
 }
