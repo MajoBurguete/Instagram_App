@@ -58,7 +58,8 @@ public class SignupActivity extends AppCompatActivity {
                             return;
                         }
                         Intent result = new Intent();
-                        result.putExtra("user", Parcels.wrap(user));
+                        result.putExtra("username", username);
+                        result.putExtra("password", password);
                         setResult(RESULT_OK,result);
                         finish();
                     }
