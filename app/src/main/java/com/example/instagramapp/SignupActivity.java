@@ -27,12 +27,38 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Get the values from the text view
+                String username = binding.etUserSign.getText().toString();
+                String password = binding.etPassSign.getText().toString();
+                String email = binding.etEmail.getText().toString();
+
+                // Check if everything is complete
+                if (username.isEmpty() || password.isEmpty() || email.isEmpty()){
+                    Toast.makeText(SignupActivity.this, "There's data missing, please fill everything!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 // Create the ParseUser
+                ParseUser user = new ParseUser();
 
                 // Set properties
+                user.setUsername(username);
+                user.setPassword(password);
+                user.setEmail(email);
 
                 //Invoke signUpInBackground
+                user.signUpInBackground(new SignUpCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        if (e != null){
+                            Toast.makeText(SignupActivity.this, "Failed to signup, try again!", Toast.LENGTH_LONG).show();
+                            Log.e(TAG, "Failed to signup", e);
+                            return;
+                        }
+                        Intent result = new Intent();
+                        setResult(RESULT_OK,result);
+                        finish();
+                    }
+                });
             }
         });
 
