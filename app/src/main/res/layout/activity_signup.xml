@@ -7,13 +7,21 @@
     android:background="@color/black"
     tools:context=".SignupActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/ToolbarSign"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </androidx.appcompat.widget.Toolbar>
+
     <ImageView
         android:id="@+id/icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@id/etUserSign"
+        android:layout_below="@id/ToolbarSign"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="100dp"
         android:layout_marginBottom="19dp"
         app:srcCompat="@drawable/ic_instagram_wordmark_white" />
 
