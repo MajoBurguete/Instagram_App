@@ -40,7 +40,6 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "It can't be empty", Toast.LENGTH_LONG).show();
                     return;
                 }
-                Log.i(TAG, "onClick login button");
                 // Method to login
                 loginUser(username, password);
             }
@@ -55,7 +54,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loginUser(String username, String password) {
-        Log.i(TAG, " Attempting to login user " + username);
         // Navigate to the main activity if the user has logged in properly
         ParseUser.logInInBackground(username, password, new LogInCallback() {
             @Override
@@ -70,6 +68,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    //Starts the intent to go to the main activity once the user is logged in
     private void goMainActivity() {
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
