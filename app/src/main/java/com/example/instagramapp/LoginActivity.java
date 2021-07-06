@@ -14,6 +14,8 @@ import com.parse.ParseException;
 import com.parse.ParseUser;
 
 public class LoginActivity extends AppCompatActivity {
+
+    private final int REQUEST_CODE_SIGN = 7;
     private String TAG = "LoginActivity";
 
     @Override
@@ -48,7 +50,8 @@ public class LoginActivity extends AppCompatActivity {
         binding.btnSign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(LoginActivity.this, "New user", Toast.LENGTH_SHORT).show();
+                Intent sign = new Intent(LoginActivity.this, SignupActivity.class);
+                startActivityForResult(sign, REQUEST_CODE_SIGN);
             }
         });
     }
