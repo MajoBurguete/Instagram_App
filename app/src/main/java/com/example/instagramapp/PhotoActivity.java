@@ -51,8 +51,8 @@ public class PhotoActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //Save post
                 String description = binding.etDescription.getText().toString();
-                if (description.isEmpty()){
-                    Toast.makeText(PhotoActivity.this, "Description can't be empty", Toast.LENGTH_SHORT).show();
+                if (description.isEmpty() || binding.ivPicture.getDrawable() == null){
+                    Toast.makeText(PhotoActivity.this, "Make sure to not leave anything blank", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 ParseUser currentUser = ParseUser.getCurrentUser();
