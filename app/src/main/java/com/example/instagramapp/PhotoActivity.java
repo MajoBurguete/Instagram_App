@@ -46,8 +46,6 @@ public class PhotoActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.photoToolbar);
         setSupportActionBar(toolbar);
 
-        //queryPosts();
-
         binding.btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,24 +85,6 @@ public class PhotoActivity extends AppCompatActivity {
                 Toast.makeText(PhotoActivity.this, "Post was save successfully", Toast.LENGTH_SHORT).show();
                 binding.etDescription.setText("");
                 binding.ivPicture.setImageResource(0);
-            }
-        });
-    }
-
-    //Getting all of the posts
-    private void queryPosts() {
-        ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
-        query.include(Post.KEY_USER);
-        query.findInBackground(new FindCallback<Post>() {
-            @Override
-            public void done(List<Post> posts, ParseException e) {
-                if(e != null){
-                    Log.e(TAG, "Issue with getting posts", e);
-                    return;
-                }
-                for (Post post : posts){
-                    Log.i(TAG, "Post: " + post.getDescription() + ", Username: " + post.getUser().getUsername());
-                }
             }
         });
     }
