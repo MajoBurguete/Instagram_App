@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import androidx.appcompat.widget.Toolbar;
@@ -14,6 +15,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.instagramapp.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import java.util.ArrayList;
@@ -23,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
 
     private String TAG = "MainActivity";
     RecyclerView rvPosts;
-    List<Post> posts;
+    List<Post> postsA;
+    PostAdapter postAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,17 +41,42 @@ public class MainActivity extends AppCompatActivity {
         bottomItemSelected(binding);
 
         // Defining the posts list
-        posts = new ArrayList<>();
+        postsA = new ArrayList<>();
 
         // Defining the recycler view
         rvPosts = binding.rvPosts;
 
         // Creating the adapter
-        PostAdapter postAdapter = new PostAdapter( this, posts);
+        postAdapter = new PostAdapter( this, postsA);
 
         // Defining the recycler view adapter and layout manager
         rvPosts.setLayoutManager(new LinearLayoutManager(this));
         rvPosts.setAdapter(postAdapter);
+
+        // query posts from Parstagram
+        queryPosts();
+    }
+
+    //Getting all of the posts
+    private void queryPosts() {
+        ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
+        query.include(Post.KEY_USER);
+        query.setLimit(20);
+        query.addAscendingOrder("createdAt");
+        query.findInBackground(new FindCallback<Post>() {
+            @Override
+            public void done(List<Post> posts, ParseException e) {
+                if(e != null){
+                    Log.e(TAG, "Issue with getting posts", e);
+                    return;
+                }
+                for (Post post : posts){
+                    Log.i(TAG, "Post: " + post.getDescription() + ", Username: " + post.getUser().getUsername());
+                }
+                postsA.addAll(posts);
+                postAdapter.notifyDataSetChanged();
+            }
+        });
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
