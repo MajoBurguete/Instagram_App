@@ -45,6 +45,9 @@ public class ComposeFragment extends Fragment {
     private File photoFile;
     private String photoFileName = "photo.jpg";
 
+    public ComposeFragment() {
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -96,8 +99,6 @@ public class ComposeFragment extends Fragment {
                 Toast.makeText(getContext(), "Post was save successfully", Toast.LENGTH_SHORT).show();
                 binding.etDescription.setText("");
                 binding.ivPicture.setImageResource(0);
-                getActivity().setResult(RESULT_OK);
-                getActivity().finish();
             }
         });
     }
