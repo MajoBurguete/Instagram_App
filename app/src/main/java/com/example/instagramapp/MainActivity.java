@@ -1,6 +1,7 @@
 package com.example.instagramapp;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -27,6 +28,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private String TAG = "MainActivity";
+    private final int REQUEST_CODE_POST = 8;
     RecyclerView rvPosts;
     List<Post> postsA;
     PostAdapter postAdapter;
@@ -76,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         query.include(Post.KEY_USER);
         query.setLimit(20);
-        query.addAscendingOrder("createdAt");
+        query.addDescendingOrder("createdAt");
         query.findInBackground(new FindCallback<Post>() {
             @Override
             public void done(List<Post> posts, ParseException e) {
@@ -102,9 +104,18 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
         if (item.getItemId() == R.id.photo){
             Intent takeP = new Intent(MainActivity.this, PhotoActivity.class);
-            startActivity(takeP);
+            startActivityForResult(takeP, REQUEST_CODE_POST);
         }
         return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_CODE_POST && resultCode == RESULT_OK){
+            queryPosts();
+            rvPosts.smoothScrollToPosition(0);
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     private void bottomItemSelected(ActivityMainBinding binding) {
