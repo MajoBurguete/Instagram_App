@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
     android:background="@color/black">
 
     <androidx.cardview.widget.CardView
@@ -61,4 +62,15 @@
         android:layout_toEndOf="@+id/tvUsername"
         android:textColor="@color/white"
         tools:text="dore_burguete Hi! this is my new account" />
+
+    <TextView
+        android:id="@+id/tvTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvUserBody"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="10dp"
+        android:textColor="@color/white"
+        tools:text="2 hr ago" />
 </RelativeLayout>
