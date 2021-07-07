@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 
 import com.example.instagramapp.databinding.ActivityMainBinding;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView rvPosts;
     List<Post> postsA;
     PostAdapter postAdapter;
+    private SwipeRefreshLayout swipeContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,18 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         //Setting the bottom navigation listener
         bottomItemSelected(binding);
+
+        // Getting the swipe container view
+        swipeContainer = findViewById(R.id.swipeCont);
+
+        // Setting the listener for the swipe container
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                queryPosts();
+                swipeContainer.setRefreshing(false);
+            }
+        });
 
         // Defining the posts list
         postsA = new ArrayList<>();
@@ -70,11 +84,11 @@ public class MainActivity extends AppCompatActivity {
                     Log.e(TAG, "Issue with getting posts", e);
                     return;
                 }
+                postAdapter.clear();
                 for (Post post : posts){
                     Log.i(TAG, "Post: " + post.getDescription() + ", Username: " + post.getUser().getUsername());
                 }
-                postsA.addAll(posts);
-                postAdapter.notifyDataSetChanged();
+                postAdapter.addAll(posts);
             }
         });
     }
