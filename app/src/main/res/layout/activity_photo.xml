@@ -16,6 +16,7 @@
 
     <Button
         android:id="@+id/btnTake"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/photoToolbar"
@@ -23,8 +24,9 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="10dp"
-        android:backgroundTint="@color/pinkI"
-        android:text="Take Picture" />
+        android:text="Take Picture"
+        android:textColor="@color/blueI"
+        app:strokeColor="@color/blueI" />
 
     <EditText
         android:id="@+id/etDescription"
@@ -51,7 +53,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="15dp"
         android:layout_marginTop="106dp"
-        android:backgroundTint="@color/pinkI"
+        android:backgroundTint="@color/blueI"
         android:text="Submit" />
 
     <ImageView
