@@ -61,6 +61,7 @@
 
         <Button
             android:id="@+id/btnLogin"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/etPassword"
@@ -69,7 +70,7 @@
             android:layout_marginTop="29dp"
             android:layout_marginEnd="10dp"
             android:text="@string/login"
-            app:backgroundTint="@color/pinkI"
+            android:textColor="@color/blueI"
             tools:layout_editor_absoluteY="198dp">
 
         </Button>
@@ -91,7 +92,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
-            android:backgroundTint="@color/pinkI"
+            android:backgroundTint="#348CDA"
             android:text="@string/sign_up" />
 
     </RelativeLayout>
