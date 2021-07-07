@@ -85,6 +85,8 @@ public class PhotoActivity extends AppCompatActivity {
                 Toast.makeText(PhotoActivity.this, "Post was save successfully", Toast.LENGTH_SHORT).show();
                 binding.etDescription.setText("");
                 binding.ivPicture.setImageResource(0);
+                setResult(RESULT_OK);
+                finish();
             }
         });
     }
