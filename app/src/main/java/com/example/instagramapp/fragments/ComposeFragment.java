@@ -27,6 +27,7 @@ import com.example.instagramapp.PhotoActivity;
 import com.example.instagramapp.Post;
 import com.example.instagramapp.R;
 import com.example.instagramapp.databinding.ActivityPhotoBinding;
+import com.example.instagramapp.databinding.FragmentComposeBinding;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
@@ -54,7 +55,7 @@ public class ComposeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ActivityPhotoBinding binding = ActivityPhotoBinding.inflate(getLayoutInflater());
+        FragmentComposeBinding binding = FragmentComposeBinding.inflate(getLayoutInflater());
         ivPicture = binding.ivPicture;
         binding.btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,7 +81,7 @@ public class ComposeFragment extends Fragment {
 
     }
 
-    private void savePost(String description, ParseUser currentUser, File photoFile, ActivityPhotoBinding binding) {
+    private void savePost(String description, ParseUser currentUser, File photoFile, FragmentComposeBinding binding) {
         Post post = new Post();
         post.setDescription(description);
         post.setImage(new ParseFile(photoFile));
