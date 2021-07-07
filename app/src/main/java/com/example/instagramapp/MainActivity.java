@@ -105,10 +105,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
-        if (item.getItemId() == R.id.photo){
-            Intent takeP = new Intent(MainActivity.this, PhotoActivity.class);
-            startActivityForResult(takeP, REQUEST_CODE_POST);
-        }
         return true;
     }
 
@@ -128,6 +124,12 @@ public class MainActivity extends AppCompatActivity {
                 if (item.getItemId() == R.id.logout){
                     ParseUser.logOut();
                     ParseUser currentUser = ParseUser.getCurrentUser();
+                }
+                if (item.getItemId() == R.id.btnPost){
+
+                }
+                if (item.getItemId() == R.id.btnHome){
+
                 }
                 Intent j = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(j);
