@@ -5,7 +5,15 @@
         android:id="@+id/btnHome"
         android:enabled="true"
         android:icon="@drawable/ic_instagram_home_outline_24"
+        android:title="Home"
         app:showAsAction="always" />
+
+    <item
+        android:id="@+id/btnPost"
+        android:enabled="true"
+        android:icon="@drawable/ic_instagram_new_post_outline_24"
+        android:title="New post"
+        app:showAsAction="always"></item>
     <item
         android:id="@+id/logout"
         android:enabled="true"
