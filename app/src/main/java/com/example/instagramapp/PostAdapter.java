@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import java.util.Date;
 import java.util.List;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
@@ -59,6 +60,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         TextView tvUserBody;
         TextView tvBody;
         ImageView ivPict;
+        TextView tvTime;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -66,6 +68,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             tvBody = itemView.findViewById(R.id.tvBody);
             ivPict = itemView.findViewById(R.id.ivPict);
             tvUserBody = itemView.findViewById(R.id.tvUserBody);
+            tvTime = itemView.findViewById(R.id.tvTime);
         }
 
         public void bind(Post post) {
@@ -75,6 +78,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             }
             tvUserBody.setText(post.getUser().getUsername());
             tvBody.setText(post.getDescription());
+            Date createdAt = post.getCreatedAt();
+            String timeAgo = Post.calculateTimeAgo(createdAt);
+            tvTime.setText(timeAgo);
         }
     }
 }
