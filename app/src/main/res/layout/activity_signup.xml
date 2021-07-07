@@ -38,9 +38,9 @@
         android:hint="@string/username"
         android:inputType="textPersonName"
         android:textColor="@color/white"
-        android:textColorHighlight="@color/pinkI"
+        android:textColorHighlight="@color/blueI"
         android:textColorHint="@android:color/darker_gray"
-        android:textColorLink="@color/pinkI"
+        android:textColorLink="@color/blueI"
         android:textCursorDrawable="@color/pinkI" />
 
     <EditText
@@ -48,7 +48,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_centerVertical="true"
         android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="15dp"
@@ -56,10 +55,10 @@
         android:hint="@string/password"
         android:inputType="textPassword"
         android:textColor="@color/white"
-        android:textColorHighlight="@color/pinkI"
+        android:textColorHighlight="@color/blueI"
         android:textColorHint="@android:color/darker_gray"
-        android:textColorLink="@color/pinkI"
-        android:textCursorDrawable="@color/pinkI"
+        android:textColorLink="@color/blueI"
+        android:textCursorDrawable="@color/blueI"
         app:layout_constraintTop_toBottomOf="@+id/etUserSign" />
 
     <EditText
@@ -74,9 +73,9 @@
         android:hint="Email"
         android:inputType="textEmailAddress"
         android:textColor="@color/white"
-        android:textColorHighlight="@color/pinkI"
+        android:textColorHighlight="@color/blueI"
         android:textColorHint="@android:color/darker_gray"
-        android:textColorLink="@color/pinkI"
+        android:textColorLink="@color/blueI"
         android:textCursorDrawable="@color/pinkI" />
 
     <Button

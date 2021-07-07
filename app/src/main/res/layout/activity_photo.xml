@@ -40,10 +40,10 @@
         android:hint="Description..."
         android:inputType="textMultiLine"
         android:textColor="@color/white"
-        android:textColorHighlight="@color/pinkI"
+        android:textColorHighlight="@color/blueI"
         android:textColorHint="@android:color/darker_gray"
-        android:textColorLink="@color/pinkI"
-        android:textCursorDrawable="@color/pinkI" />
+        android:textColorLink="@color/blueI"
+        android:textCursorDrawable="@color/blueI" />
 
     <Button
         android:id="@+id/btnSubmit"

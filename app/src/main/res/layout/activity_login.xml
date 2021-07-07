@@ -35,10 +35,10 @@
             android:hint="@string/username"
             android:inputType="textPersonName"
             android:textColor="@color/white"
-            android:textColorHighlight="@color/pinkI"
+            android:textColorHighlight="@color/blueI"
             android:textColorHint="@android:color/darker_gray"
-            android:textColorLink="@color/pinkI"
-            android:textCursorDrawable="@color/pinkI" />
+            android:textColorLink="@color/blueI"
+            android:textCursorDrawable="@color/blueI" />
 
         <EditText
             android:id="@+id/etPassword"
@@ -53,10 +53,10 @@
             android:hint="@string/password"
             android:inputType="textPassword"
             android:textColor="@color/white"
-            android:textColorHighlight="@color/pinkI"
+            android:textColorHighlight="@color/blueI"
             android:textColorHint="@android:color/darker_gray"
-            android:textColorLink="@color/pinkI"
-            android:textCursorDrawable="@color/pinkI"
+            android:textColorLink="@color/blueI"
+            android:textCursorDrawable="@color/blueI"
             app:layout_constraintTop_toBottomOf="@+id/etUsername" />
 
         <Button
