@@ -42,6 +42,9 @@ public class ComposeFragment extends Fragment {
 
     private String TAG = "PhotoFragment";
     ImageView ivPicture;
+    Button btnTake;
+    Button btnSubmit;
+    EditText etDescription;
     private File photoFile;
     private String photoFileName = "photo.jpg";
 
@@ -59,22 +62,26 @@ public class ComposeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         FragmentComposeBinding binding = FragmentComposeBinding.inflate(getLayoutInflater());
-        ivPicture = binding.ivPicture;
-        binding.btnSubmit.setOnClickListener(new View.OnClickListener() {
+        ivPicture = view.findViewById(R.id.ivPicture);
+        btnTake = view.findViewById(R.id.btnTake);
+        btnSubmit = view.findViewById(R.id.btnSubmit);
+        etDescription = view.findViewById(R.id.etDescription);
+
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Save post
-                String description = binding.etDescription.getText().toString();
-                if (description.isEmpty() || binding.ivPicture.getDrawable() == null){
+                String description = etDescription.getText().toString();
+                if (description.isEmpty() || ivPicture.getDrawable() == null){
                     Toast.makeText(getContext(), "Make sure to not leave anything blank", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 ParseUser currentUser = ParseUser.getCurrentUser();
-                savePost(description, currentUser, photoFile, binding);
+                savePost(description, currentUser, photoFile);
             }
         });
 
-        binding.btnTake.setOnClickListener(new View.OnClickListener() {
+        btnTake.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Launch camera
@@ -84,7 +91,7 @@ public class ComposeFragment extends Fragment {
 
     }
 
-    private void savePost(String description, ParseUser currentUser, File photoFile, FragmentComposeBinding binding) {
+    private void savePost(String description, ParseUser currentUser, File photoFile) {
         Post post = new Post();
         post.setDescription(description);
         post.setImage(new ParseFile(photoFile));
@@ -97,8 +104,8 @@ public class ComposeFragment extends Fragment {
                     Toast.makeText(getContext(), "Error while saving!", Toast.LENGTH_SHORT).show();
                 }
                 Toast.makeText(getContext(), "Post was save successfully", Toast.LENGTH_SHORT).show();
-                binding.etDescription.setText("");
-                binding.ivPicture.setImageResource(0);
+                etDescription.setText("");
+                ivPicture.setImageResource(0);
             }
         });
     }
