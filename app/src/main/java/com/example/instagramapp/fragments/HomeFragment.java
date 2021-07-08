@@ -56,6 +56,10 @@ public class HomeFragment extends Fragment {
         // Creating the adapter
         postAdapter = new PostAdapter( getContext(), postsA);
 
+        // Defining the recycler view adapter and layout manager
+        rvPosts.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvPosts.setAdapter(postAdapter);
+
         // query posts from Parstagram
         queryPosts();
     }
