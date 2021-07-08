@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,6 +22,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     private Context context;
     List<Post> rvPosts;
     OnClickListener interactionListener;
+    public static final String KEY_PROFILE = "profilePic";
 
     public interface OnClickListener {
         void onLikeClick(int position);
@@ -68,7 +70,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         TextView tvBody;
         ImageView ivPict;
         TextView tvTime;
-        Button btnLike;
+        ImageButton btnLike;
+        ImageView ivProfileP;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -77,6 +80,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             ivPict = itemView.findViewById(R.id.ivPict);
             tvUserBody = itemView.findViewById(R.id.tvUserBody);
             tvTime = itemView.findViewById(R.id.tvTime);
+            btnLike = itemView.findViewById(R.id.btnLike);
+            ivProfileP = itemView.findViewById(R.id.ivProfileP);
         }
 
         public void bind(Post post) {
@@ -95,6 +100,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                     interactionListener.onLikeClick(getAdapterPosition());
                 }
             });
+
+            Glide.with(context).load(post.getUser().getParseFile(KEY_PROFILE).getUrl()).circleCrop().into(ivProfileP);
 
         }
     }
