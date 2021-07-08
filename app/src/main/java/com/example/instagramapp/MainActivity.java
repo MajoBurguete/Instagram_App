@@ -67,6 +67,9 @@ public class MainActivity extends AppCompatActivity {
                 if (item.getItemId() == R.id.logout){
                     ParseUser.logOut();
                     ParseUser currentUser = ParseUser.getCurrentUser();
+                    Intent login = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(login);
+                    finish();
                 }
                 if (item.getItemId() == R.id.btnPost){
                     Toast.makeText(MainActivity.this, "Post!", Toast.LENGTH_SHORT).show();
