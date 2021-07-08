@@ -25,7 +25,7 @@ import com.parse.ParseQuery;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements PostAdapter.OnClickListener{
 
     private String TAG = "HomeFragment";
     RecyclerView rvPosts;
@@ -55,7 +55,7 @@ public class HomeFragment extends Fragment {
         postsA = new ArrayList<>();
 
         // Creating the adapter
-        postAdapter = new PostAdapter( getContext(), postsA);
+        postAdapter = new PostAdapter( getContext(), postsA, this);
 
         // Defining the recycler view adapter and layout manager
         rvPosts.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -100,4 +100,8 @@ public class HomeFragment extends Fragment {
         });
     }
 
+    @Override
+    public void onLikeClick(int position) {
+
+    }
 }
