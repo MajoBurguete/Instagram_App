@@ -22,12 +22,15 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
 
     private String TAG = "HomeFragment";
     RecyclerView rvPosts;
+    List<Post> postsA;
+    PostAdapter postAdapter;
 
     public HomeFragment(){
     }
@@ -46,6 +49,12 @@ public class HomeFragment extends Fragment {
 
         // Defining the recycler view
         rvPosts = binding.rvPosts;
+
+        // Defining the posts list
+        postsA = new ArrayList<>();
+
+        // Creating the adapter
+        postAdapter = new PostAdapter( getContext(), postsA);
 
         // query posts from Parstagram
         queryPosts();
