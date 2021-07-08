@@ -82,6 +82,13 @@ public class SignupActivity extends AppCompatActivity {
                 });
             }
         });
+
+        ibProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onPickPhoto(v);
+            }
+        });
     }
 
     // Trigger gallery selection for a photo
