@@ -8,7 +8,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 
@@ -23,10 +22,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.instagramapp.PhotoActivity;
 import com.example.instagramapp.Post;
 import com.example.instagramapp.R;
-import com.example.instagramapp.databinding.ActivityPhotoBinding;
 import com.example.instagramapp.databinding.FragmentComposeBinding;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -36,7 +33,6 @@ import com.parse.SaveCallback;
 import java.io.File;
 
 import static android.app.Activity.RESULT_OK;
-import static com.example.instagramapp.PhotoActivity.CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE;
 
 public class ComposeFragment extends Fragment {
 
@@ -45,6 +41,7 @@ public class ComposeFragment extends Fragment {
     Button btnTake;
     Button btnSubmit;
     EditText etDescription;
+    public static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 20;
     private File photoFile;
     private String photoFileName = "photo.jpg";
 
