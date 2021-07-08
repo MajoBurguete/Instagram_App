@@ -77,11 +77,11 @@ public class HomeFragment extends Fragment {
                     Log.e(TAG, "Issue with getting posts", e);
                     return;
                 }
-                //postAdapter.clear();
+                postAdapter.clear();
                 for (Post post : posts){
                     Log.i(TAG, "Post: " + post.getDescription() + ", Username: " + post.getUser().getUsername());
                 }
-                //postAdapter.addAll(posts);
+                postAdapter.addAll(posts);
             }
         });
     }
