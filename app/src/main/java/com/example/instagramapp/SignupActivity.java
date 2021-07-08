@@ -4,6 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.ImageDecoder;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.provider.MediaStore;
@@ -11,6 +15,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.instagramapp.databinding.ActivitySignupBinding;
@@ -20,10 +25,13 @@ import com.parse.SignUpCallback;
 
 import org.parceler.Parcels;
 
+import java.io.IOException;
+
 public class SignupActivity extends AppCompatActivity {
 
     private String TAG = "SignupActivity";
     public final static int PICK_PHOTO_CODE = 27;
+    ImageButton ibProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +40,7 @@ public class SignupActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         Toolbar toolbar = binding.ToolbarSign;
         setSupportActionBar(toolbar);
+        ibProfile = binding.ibProfile;
 
         binding.btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +95,38 @@ public class SignupActivity extends AppCompatActivity {
         if (intent.resolveActivity(getPackageManager()) != null) {
             // Bring up gallery to select a photo
             startActivityForResult(intent, PICK_PHOTO_CODE);
+        }
+    }
+
+    public Bitmap loadFromUri(Uri photoUri) {
+        Bitmap image = null;
+        try {
+            // check version of Android on device
+            if(Build.VERSION.SDK_INT > 27){
+                // on newer versions of Android, use the new decodeBitmap method
+                ImageDecoder.Source source = ImageDecoder.createSource(this.getContentResolver(), photoUri);
+                image = ImageDecoder.decodeBitmap(source);
+            } else {
+                // support older versions of Android by using getBitmap
+                image = MediaStore.Images.Media.getBitmap(this.getContentResolver(), photoUri);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return image;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if ((data != null) && requestCode == PICK_PHOTO_CODE) {
+            Uri photoUri = data.getData();
+
+            // Load the image located at photoUri into selectedImage
+            Bitmap selectedImage = loadFromUri(photoUri);
+
+            // Load the selected image into a preview
+            ibProfile.setImageBitmap(selectedImage);
         }
     }
 
