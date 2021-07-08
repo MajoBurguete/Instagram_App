@@ -31,6 +31,7 @@ public class HomeFragment extends Fragment {
     RecyclerView rvPosts;
     List<Post> postsA;
     PostAdapter postAdapter;
+    private SwipeRefreshLayout swipeContainer;
 
     public HomeFragment(){
     }
@@ -48,7 +49,7 @@ public class HomeFragment extends Fragment {
         FragmentHomeBinding binding = FragmentHomeBinding.inflate(getLayoutInflater());
 
         // Defining the recycler view
-        rvPosts = binding.rvPosts;
+        rvPosts = view.findViewById(R.id.rvPosts);
 
         // Defining the posts list
         postsA = new ArrayList<>();
@@ -59,6 +60,19 @@ public class HomeFragment extends Fragment {
         // Defining the recycler view adapter and layout manager
         rvPosts.setLayoutManager(new LinearLayoutManager(getContext()));
         rvPosts.setAdapter(postAdapter);
+
+
+        // Getting the swipe container view
+        swipeContainer = view.findViewById(R.id.swipeCont);
+
+        // Setting the listener for the swipe container
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                queryPosts();
+                swipeContainer.setRefreshing(false);
+            }
+        });
 
         // query posts from Parstagram
         queryPosts();
