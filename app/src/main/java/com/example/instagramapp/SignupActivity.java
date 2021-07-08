@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcel;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,6 +23,7 @@ import org.parceler.Parcels;
 public class SignupActivity extends AppCompatActivity {
 
     private String TAG = "SignupActivity";
+    public final static int PICK_PHOTO_CODE = 27;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +73,20 @@ public class SignupActivity extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    // Trigger gallery selection for a photo
+    public void onPickPhoto(View view) {
+        // Create intent for picking a photo from the gallery
+        Intent intent = new Intent(Intent.ACTION_PICK,
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+        // If you call startActivityForResult() using an intent that no app can handle, your app will crash.
+        // So as long as the result is not null, it's safe to use the intent.
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            // Bring up gallery to select a photo
+            startActivityForResult(intent, PICK_PHOTO_CODE);
+        }
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
