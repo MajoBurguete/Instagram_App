@@ -19,15 +19,21 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
     private Context context;
     List<Post> rvPosts;
+    OnClickListener interactionListener;
 
-    public PostAdapter(Context context, List<Post> rvPosts) {
+    public interface OnClickListener {
+        void onLikeClick(int position);
+    }
+
+    public PostAdapter(Context context, List<Post> rvPosts, OnClickListener clickListener) {
         this.context = context;
         this.rvPosts = rvPosts;
+        this.interactionListener = clickListener;
     }
 
     @NonNull
     @Override
-    public PostAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_post, parent, false);
         return new ViewHolder(view);
     }
