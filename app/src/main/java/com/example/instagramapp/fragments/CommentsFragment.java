@@ -10,8 +10,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.instagramapp.Comment;
+import com.example.instagramapp.CommentAdapter;
 import com.example.instagramapp.Post;
 import com.example.instagramapp.R;
 import com.parse.FindCallback;
@@ -20,11 +22,14 @@ import com.parse.ParseQuery;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CommentsFragment extends Fragment {
 
     private String TAG = "CommentsFragment";
+    RecyclerView rvComments;
+    List<Comment> commentList;
 
     public CommentsFragment() {
         // Required empty public constructor
@@ -40,6 +45,13 @@ public class CommentsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        //Defining the recycler view
+        rvComments = view.findViewById(R.id.rvComments);
+
+        // Defining the comment list
+        commentList = new ArrayList<>();
+
         queryComments();
     }
 
