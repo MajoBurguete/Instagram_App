@@ -104,4 +104,9 @@ public class HomeFragment extends Fragment implements PostAdapter.OnClickListene
     public void onLikeClick(int position) {
 
     }
+
+    @Override
+    public void onCommentsClick(int position) {
+
+    }
 }
