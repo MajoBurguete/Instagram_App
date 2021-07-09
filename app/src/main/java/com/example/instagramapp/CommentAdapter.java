@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -62,6 +64,9 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         TextView tvUser;
         TextView tvComment;
         TextView tvTime;
+        ImageView ivUserPic;
+        EditText etComment;
+        ImageButton ibSendCom;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -69,6 +74,9 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
             tvUser = itemView.findViewById(R.id.tvUserC);
             tvComment = itemView.findViewById(R.id.tvBodyCom);
             tvTime = itemView.findViewById(R.id.tvRelative);
+            ivUserPic = itemView.findViewById(R.id.ivUserPic);
+            etComment = itemView.findViewById(R.id.etComment);
+            ibSendCom = itemView.findViewById(R.id.ibSendCom);
         }
 
         public void bind(Comment comment) {
