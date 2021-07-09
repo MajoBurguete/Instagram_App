@@ -2,6 +2,7 @@ package com.example.instagramapp;
 
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
+import com.parse.ParseUser;
 
 @ParseClassName("Comment")
 public class Comment extends ParseObject {
@@ -17,20 +18,20 @@ public class Comment extends ParseObject {
         put(KEY_COMMENT, comment);
     }
 
-    public String getPost(){
-        return getString(KEY_POST);
+    public ParseObject getPost(){
+        return getParseObject(KEY_POST);
     }
 
-    public void setPost(String id){
-        put(KEY_POST, id);
+    public void setPost(ParseObject post){
+        put(KEY_POST, post);
     }
 
-    public String getUser(){
-        return getString(KEY_USER);
+    public ParseUser getUser(){
+        return getParseUser(KEY_USER);
     }
 
-    public void setUser(String id){
-        put(KEY_USER, id);
+    public void setUser(ParseUser user){
+        put(KEY_USER, user);
     }
 
 
