@@ -15,10 +15,10 @@
             android:id="@+id/rvComments"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/imageButton" />
+            android:layout_below="@id/btnCloseCom" />
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/btnCloseCom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
