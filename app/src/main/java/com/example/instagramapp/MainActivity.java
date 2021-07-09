@@ -80,6 +80,9 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Home!", Toast.LENGTH_SHORT).show();
                     fragment = new HomeFragment();
                 }
+                if (item.getItemId() == R.id.btnProfile){
+                    Toast.makeText(MainActivity.this, "Profile!", Toast.LENGTH_SHORT).show();
+                }
                 fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
                 return true;
             }
