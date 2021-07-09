@@ -113,6 +113,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                 }
             });
 
+            btnComment.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    interactionListener.onCommentButtonClick(getAdapterPosition());
+                }
+            });
+
             Glide.with(context).load(post.getUser().getParseFile(KEY_PROFILE).getUrl()).circleCrop().into(ivProfileP);
 
         }
