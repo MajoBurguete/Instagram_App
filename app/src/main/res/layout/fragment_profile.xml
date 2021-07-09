@@ -70,6 +70,31 @@
                 android:layout_below="@+id/tvProfileDesc"
                 android:layout_marginTop="0dp" />
 
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvProfileName"
+                android:layout_marginStart="187dp"
+                android:layout_marginTop="23dp"
+                android:layout_toEndOf="@+id/ivProfPict"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:text="145" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView2"
+                android:layout_marginStart="181dp"
+                android:layout_marginTop="1dp"
+                android:layout_toEndOf="@+id/ivProfPict"
+                android:text="@string/posts"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
         </RelativeLayout>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
