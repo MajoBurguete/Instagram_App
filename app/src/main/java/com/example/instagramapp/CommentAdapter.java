@@ -73,7 +73,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
 
         public void bind(Comment comment) {
             tvUser.setText(comment.getUser().getUsername());
-            Glide.with(context).load(comment.getUser().getParseFile(KEY_PROFILE).getUrl()).centerCrop().into(ivPicture);
+            Glide.with(context).load(comment.getUser().getParseFile(KEY_PROFILE).getUrl()).circleCrop().into(ivPicture);
             tvComment.setText(comment.getComment());
             Date createdAt = comment.getCreatedAt();
             String timeAgo = Comment.calculateTimeAgo(createdAt);
