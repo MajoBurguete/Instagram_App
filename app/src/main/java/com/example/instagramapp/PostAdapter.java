@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -72,6 +71,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         TextView tvTime;
         ImageButton btnLike;
         ImageView ivProfileP;
+        TextView tvComments;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -82,6 +82,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             tvTime = itemView.findViewById(R.id.tvTime);
             btnLike = itemView.findViewById(R.id.btnLike);
             ivProfileP = itemView.findViewById(R.id.ivProfileP);
+            tvComments = itemView.findViewById(R.id.tvComments);
         }
 
         public void bind(Post post) {
