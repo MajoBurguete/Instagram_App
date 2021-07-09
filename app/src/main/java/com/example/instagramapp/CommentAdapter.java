@@ -10,12 +10,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
+import java.util.Date;
 import java.util.List;
 
 public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHolder> {
 
     private Context context;
     List<Comment> rvComments;
+    public static final String KEY_PROFILE = "profilePic";
 
     public CommentAdapter(Context context, List<Comment> commentList) {
         this.context = context;
@@ -56,6 +60,12 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         }
 
         public void bind(Comment comment) {
+            tvUser.setText(comment.getUser().getUsername());
+            Glide.with(context).load(comment.getUser().getParseFile(KEY_PROFILE).getUrl()).centerCrop().into(ivPicture);
+            tvComment.setText(comment.getComment());
+            Date createdAt = comment.getCreatedAt();
+            String timeAgo = Comment.calculateTimeAgo(createdAt);
+            tvTime.setText(timeAgo);
         }
     }
 }
