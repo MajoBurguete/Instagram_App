@@ -19,6 +19,7 @@ import com.example.instagramapp.Post;
 import com.example.instagramapp.R;
 import com.parse.FindCallback;
 import com.parse.ParseException;
+import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
 import org.w3c.dom.Text;
@@ -70,7 +71,6 @@ public class CommentsFragment extends Fragment {
     private void queryComments() {
         ParseQuery<Comment> query = ParseQuery.getQuery(Comment.class);
         query.include(Comment.KEY_USER);
-        query.include(Comment.KEY_POST);
         query.setLimit(20);
         query.addDescendingOrder("createdAt");
         query.findInBackground(new FindCallback<Comment>() {
@@ -81,10 +81,13 @@ public class CommentsFragment extends Fragment {
                     return;
                 }
                 commentAdapter.clear();
+                List<Comment> commentsPost = new ArrayList<>();
                 for (Comment comment: comments){
-                    Log.i(TAG, "Comment: " + comment.getComment() + ", Username: " + comment.getUser().getUsername() + ", post: "+comment.getPost().getString("objectId"));
+                    if (comment.getPost().getObjectId().equals(post.getObjectId())){
+                        commentsPost.add(comment);
+                    }
                 }
-                commentAdapter.addAll(comments);
+                commentAdapter.addAll(commentsPost);
             }
         });
     }
