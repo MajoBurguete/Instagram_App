@@ -29,6 +29,7 @@ import com.parse.SignUpCallback;
 
 import org.parceler.Parcels;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 
@@ -58,7 +59,7 @@ public class SignupActivity extends AppCompatActivity {
                 String email = binding.etEmail.getText().toString();
 
                 // Check if everything is complete
-                if (username.isEmpty() || password.isEmpty() || email.isEmpty()){
+                if (username.isEmpty() || password.isEmpty() || email.isEmpty()) {
                     Toast.makeText(SignupActivity.this, "There's data missing, please fill everything!", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -74,45 +75,28 @@ public class SignupActivity extends AppCompatActivity {
                 user.signUpInBackground(new SignUpCallback() {
                     @Override
                     public void done(ParseException e) {
-                        if (e != null){
+                        if (e != null) {
                             Toast.makeText(SignupActivity.this, "Failed to signup, try again!", Toast.LENGTH_LONG).show();
                             Log.e(TAG, "Failed to signup", e);
                             return;
                         }
-                        Intent result = new Intent();
-                        result.putExtra("username", username);
-                        result.putExtra("password", password);
-                        setResult(RESULT_OK,result);
-                        finish();
+
+                        // save profile pic first
+                        ParseUser user = ParseUser.getCurrentUser();
+                        user.put(KEY_PROFILE, photoFile);
+                        user.saveInBackground(new SaveCallback() {
+                            @Override
+                            public void done(ParseException e) {
+                                // go back to previous activity
+                                Intent result = new Intent();
+                                result.putExtra("username", username);
+                                result.putExtra("password", password);
+                                setResult(RESULT_OK, result);
+                                finish();
+                            }
+                        });
                     }
                 });
-                /*photoFile.saveInBackground(new SaveCallback() {
-                    @Override
-                    public void done(ParseException e) {
-                        if( e == null){
-                            user.put(KEY_PROFILE, photoFile);
-
-                            //Invoke signUpInBackground
-                            user.signUpInBackground(new SignUpCallback() {
-                                @Override
-                                public void done(ParseException e) {
-                                    if (e != null){
-                                        Toast.makeText(SignupActivity.this, "Failed to signup, try again!", Toast.LENGTH_LONG).show();
-                                        Log.e(TAG, "Failed to signup", e);
-                                        return;
-                                    }
-                                    Intent result = new Intent();
-                                    result.putExtra("username", username);
-                                    result.putExtra("password", password);
-                                    setResult(RESULT_OK,result);
-                                    finish();
-                                }
-                            });
-                        } else {
-                            Log.e(TAG, "Error while saving the image", e);
-                        }
-                    }
-                });*/
             }
         });
 
@@ -161,12 +145,24 @@ public class SignupActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if ((data != null) && requestCode == PICK_PHOTO_CODE) {
             Uri photoUri = data.getData();
+            String photoPath = photoUri.getPath();
 
             String realPath = getRealPathFromUri(this,photoUri);
-            photoFile = new ParseFile(new File(realPath));
+            File localFile = new File(realPath);
+            boolean canRead = localFile.canRead();
+            String uriToString = photoUri.toString();
+            File urllocalFile = new File(uriToString);
+            canRead = urllocalFile.canRead();
+
 
             // Load the image located at photoUri into selectedImage
             Bitmap selectedImage = loadFromUri(photoUri);
+
+
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            selectedImage.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            byte[] byteArray = stream.toByteArray();
+            photoFile = new ParseFile(byteArray);
 
             // Load the selected image into a preview
             ibProfile.setImageBitmap(selectedImage);
