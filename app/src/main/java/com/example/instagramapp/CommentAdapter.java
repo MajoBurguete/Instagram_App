@@ -13,8 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.parse.ParseObject;
-import com.parse.ParseUser;
 
 import java.util.Date;
 import java.util.List;
@@ -66,9 +64,6 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         TextView tvUser;
         TextView tvComment;
         TextView tvTime;
-        ImageView ivUserPic;
-        EditText etComment;
-        ImageButton ibSendCom;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -76,14 +71,9 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
             tvUser = itemView.findViewById(R.id.tvUserC);
             tvComment = itemView.findViewById(R.id.tvBodyCom);
             tvTime = itemView.findViewById(R.id.tvRelative);
-            ivUserPic = itemView.findViewById(R.id.ivUserPic);
-            etComment = itemView.findViewById(R.id.etComment);
-            ibSendCom = itemView.findViewById(R.id.ibSendCom);
         }
 
         public void bind(Comment comment) {
-            ParseUser user = ParseUser.getCurrentUser();
-            Glide.with(context).load(user.getParseFile(KEY_PROFILE).getUrl()).circleCrop().into(ivUserPic);
             tvUser.setText(comment.getUser().getUsername());
             Glide.with(context).load(comment.getUser().getParseFile(KEY_PROFILE).getUrl()).circleCrop().into(ivPicture);
             tvComment.setText(comment.getComment());
