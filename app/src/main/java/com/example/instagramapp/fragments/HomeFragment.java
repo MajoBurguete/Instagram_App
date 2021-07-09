@@ -113,7 +113,7 @@ public class HomeFragment extends Fragment implements PostAdapter.OnClickListene
 
     @Override
     public void onCommentButtonClick(int position) {
-
+        onCommentsClick(position);
     }
 }
 
