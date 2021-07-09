@@ -5,15 +5,23 @@
         android:id="@+id/btnHome"
         android:enabled="true"
         android:icon="@drawable/ic_instagram_home_outline_24"
-        android:title="Home"
+        android:title="@string/home"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/btnPost"
         android:enabled="true"
         android:icon="@drawable/ic_instagram_new_post_outline_24"
-        android:title="New post"
+        android:title="@string/new_post"
         app:showAsAction="always"></item>
+
+    <item
+        android:id="@+id/btnProfile"
+        android:enabled="true"
+        android:icon="@drawable/ic_instagram_user_outline_24"
+        android:title="@string/profile"
+        app:showAsAction="always"></item>
+
     <item
         android:id="@+id/logout"
         android:enabled="true"
