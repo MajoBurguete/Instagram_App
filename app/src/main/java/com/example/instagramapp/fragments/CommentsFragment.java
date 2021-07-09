@@ -79,6 +79,20 @@ public class CommentsFragment extends Fragment {
             }
         });
 
+        ibSendCom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Save Comment
+                String comment = etComment.getText().toString();
+                if (comment.isEmpty()){
+                    Toast.makeText(getContext(), "Make sure to not leave anything blank", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                ParseUser currentUser = ParseUser.getCurrentUser();
+                savePost(comment, currentUser);
+            }
+        });
+
         //Defining the recycler view
         rvComments = view.findViewById(R.id.rvComments);
 
@@ -93,6 +107,9 @@ public class CommentsFragment extends Fragment {
         rvComments.setLayoutManager(new LinearLayoutManager(getContext()));
 
         queryComments();
+    }
+
+    private void savePost(String comment, ParseUser currentUser) {
     }
 
     //Getting all of the posts
