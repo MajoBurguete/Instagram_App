@@ -22,6 +22,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.example.instagramapp.databinding.ActivityMainBinding;
 import com.example.instagramapp.fragments.ComposeFragment;
 import com.example.instagramapp.fragments.HomeFragment;
+import com.example.instagramapp.fragments.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -82,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 if (item.getItemId() == R.id.btnProfile){
                     Toast.makeText(MainActivity.this, "Profile!", Toast.LENGTH_SHORT).show();
+                    fragment = new ProfileFragment();
                 }
                 fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
                 return true;
