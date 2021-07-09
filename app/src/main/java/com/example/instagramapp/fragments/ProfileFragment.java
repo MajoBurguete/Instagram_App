@@ -38,6 +38,7 @@ public class ProfileFragment extends Fragment implements PostAdapter.OnClickList
     TextView tvProfileName;
     TextView tvNameP;
     TextView tvProfileDesc;
+    TextView tvNumber;
     RecyclerView rvPosts;
     List<Post> postsUser;
     PostAdapter adapter;
@@ -61,6 +62,7 @@ public class ProfileFragment extends Fragment implements PostAdapter.OnClickList
         tvNameP = view.findViewById(R.id.tvNameP);
         tvProfileName = view.findViewById(R.id.tvProfileName);
         tvProfileDesc = view.findViewById(R.id.tvProfileDesc);
+        tvNumber = view.findViewById(R.id.tvNumber);
         swipeContainer = view.findViewById(R.id.scProfile);
 
         // Set the user's data
@@ -69,8 +71,6 @@ public class ProfileFragment extends Fragment implements PostAdapter.OnClickList
         tvNameP.setText(user.getString(KEY_NAME));
         tvProfileName.setText(user.getUsername());
         tvProfileDesc.setText(user.getString(KEY_PROFILEDESC));
-
-
         // Initialize post array
         postsUser = new ArrayList<>();
 
@@ -115,6 +115,9 @@ public class ProfileFragment extends Fragment implements PostAdapter.OnClickList
                     Log.i(TAG, "Post: " + post.getDescription() + ", Username: " + post.getUser().getUsername());
                 }
                 adapter.addAll(posts);
+                // Seting the number of posts after receiving them
+                int value  = adapter.getItemCount();
+                tvNumber.setText(String.valueOf(value));
             }
         });
     }
