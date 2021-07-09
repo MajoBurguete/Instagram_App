@@ -73,6 +73,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         ImageButton btnLike;
         ImageView ivProfileP;
         TextView tvComments;
+        ImageButton btnComment;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -84,6 +85,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             btnLike = itemView.findViewById(R.id.btnLike);
             ivProfileP = itemView.findViewById(R.id.ivProfileP);
             tvComments = itemView.findViewById(R.id.tvComments);
+            btnComment = itemView.findViewById(R.id.btnComment);
         }
 
         public void bind(Post post) {
