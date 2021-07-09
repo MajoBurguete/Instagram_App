@@ -78,9 +78,11 @@ public class CommentsFragment extends Fragment {
                     Log.e(TAG, "Issue with getting posts", e);
                     return;
                 }
+                commentAdapter.clear();
                 for (Comment comment: comments){
                     Log.i(TAG, "Comment: " + comment.getComment() + ", Username: " + comment.getUser().getUsername() + ", post: "+comment.getPost().getString("objectId"));
                 }
+                commentAdapter.addAll(comments);
             }
         });
     }
