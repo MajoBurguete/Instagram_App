@@ -108,23 +108,7 @@ public class HomeFragment extends Fragment implements PostAdapter.OnClickListene
     @Override
     public void onCommentsClick(int position) {
         Fragment fragment = new CommentsFragment();
-        getChildFragmentManager().beginTransaction().replace(R.id.flContainer, fragment).commit();
+        getChildFragmentManager().beginTransaction().replace(R.id.childLayout, fragment).commit();
     }
 }
 
-class CommentsFragment extends Fragment {
-    public CommentsFragment() {
-        // Required empty public constructor
-    }
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_comments, container, false);
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-    }
-}
