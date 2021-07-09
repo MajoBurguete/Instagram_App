@@ -5,11 +5,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,6 +19,7 @@ import com.example.instagramapp.Comment;
 import com.example.instagramapp.CommentAdapter;
 import com.example.instagramapp.Post;
 import com.example.instagramapp.R;
+import com.example.instagramapp.databinding.FragmentCommentsBinding;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -50,6 +53,15 @@ public class CommentsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        ImageButton btnCloseCom = view.findViewById(R.id.btnCloseCom);
+
+        btnCloseCom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().beginTransaction().remove(CommentsFragment.this).commit();
+            }
+        });
 
         //Defining the recycler view
         rvComments = view.findViewById(R.id.rvComments);
