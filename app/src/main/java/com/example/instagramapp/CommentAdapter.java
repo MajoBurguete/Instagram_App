@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,8 +41,18 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+
+        ImageView ivPicture;
+        TextView tvUser;
+        TextView tvComment;
+        TextView tvTime;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            ivPicture = itemView.findViewById(R.id.ivPPicture);
+            tvUser = itemView.findViewById(R.id.tvUserC);
+            tvComment = itemView.findViewById(R.id.tvBodyCom);
+            tvTime = itemView.findViewById(R.id.tvRelative);
         }
 
         public void bind(Comment comment) {
