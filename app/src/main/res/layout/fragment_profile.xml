@@ -24,7 +24,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="25sp"
                 android:textStyle="bold"
                 tools:text="dore_burguete" />
 
@@ -60,7 +60,7 @@
                 android:layout_height="70dp"
                 android:layout_below="@id/tvProfileName"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 tools:src="@tools:sample/avatars" />
 
             <androidx.recyclerview.widget.RecyclerView
