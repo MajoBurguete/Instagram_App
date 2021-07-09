@@ -71,7 +71,7 @@
                 android:layout_marginTop="0dp" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/tvNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tvProfileName"
@@ -84,10 +84,10 @@
                 tools:text="145" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/postsText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/textView2"
+                android:layout_below="@+id/tvNumber"
                 android:layout_marginStart="181dp"
                 android:layout_marginTop="1dp"
                 android:layout_toEndOf="@+id/ivProfPict"
