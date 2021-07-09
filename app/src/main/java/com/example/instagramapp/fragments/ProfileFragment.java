@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -63,6 +64,10 @@ public class ProfileFragment extends Fragment implements PostAdapter.OnClickList
 
         // Defining the adapter
         adapter = new PostAdapter(getContext(), postsUser, this);
+
+        // Assign the adapter and the layout manager to the recycler view
+        rvPosts.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvPosts.setAdapter(adapter);
 
         // Initialize post array
         postsUser = new ArrayList<>();
