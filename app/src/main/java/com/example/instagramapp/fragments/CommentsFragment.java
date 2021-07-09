@@ -5,7 +5,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -37,6 +39,10 @@ public class CommentsFragment extends Fragment {
     List<Comment> commentList;
     CommentAdapter commentAdapter;
     Post post;
+    ImageView ivUserPic;
+    EditText etComment;
+    ImageButton ibSendCom;
+    ImageButton btnCloseCom;
 
     public CommentsFragment(Post post) {
         this.post = post;
@@ -54,7 +60,11 @@ public class CommentsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        ImageButton btnCloseCom = view.findViewById(R.id.btnCloseCom);
+        // Layout references
+        ivUserPic = view.findViewById(R.id.ivUserPic);
+        etComment = view.findViewById(R.id.etComment);
+        ibSendCom = view.findViewById(R.id.ibSendCom);
+        btnCloseCom = view.findViewById(R.id.btnCloseCom);
 
         btnCloseCom.setOnClickListener(new View.OnClickListener() {
             @Override
