@@ -30,6 +30,7 @@ public class CommentsFragment extends Fragment {
     private String TAG = "CommentsFragment";
     RecyclerView rvComments;
     List<Comment> commentList;
+    CommentAdapter commentAdapter;
 
     public CommentsFragment() {
         // Required empty public constructor
@@ -51,6 +52,10 @@ public class CommentsFragment extends Fragment {
 
         // Defining the comment list
         commentList = new ArrayList<>();
+
+        // Creating the adapter
+        commentAdapter = new CommentAdapter(getContext(), commentList);
+
 
         queryComments();
     }
