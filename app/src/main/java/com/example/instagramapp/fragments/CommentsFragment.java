@@ -28,6 +28,7 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 import org.w3c.dom.Text;
 
@@ -110,6 +111,23 @@ public class CommentsFragment extends Fragment {
     }
 
     private void savePost(String comment, ParseUser currentUser) {
+        Comment commentObj= new Comment();
+        commentObj.setComment(comment);
+        commentObj.setUser(currentUser);
+        commentObj.setPost(post);
+        commentObj.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e != null){
+                    Log.e(TAG, "Error while saving comment", e);
+                    Toast.makeText(getContext(), "Error while saving!", Toast.LENGTH_SHORT).show();
+                }
+                Toast.makeText(getContext(), "Comment was save successfully", Toast.LENGTH_SHORT).show();
+                etComment.setText("");
+                queryComments();
+            }
+        });
+
     }
 
     //Getting all of the posts
