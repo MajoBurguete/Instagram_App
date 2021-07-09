@@ -32,8 +32,10 @@ public class CommentsFragment extends Fragment {
     RecyclerView rvComments;
     List<Comment> commentList;
     CommentAdapter commentAdapter;
+    Post post;
 
-    public CommentsFragment() {
+    public CommentsFragment(Post post) {
+        this.post = post;
         // Required empty public constructor
     }
 

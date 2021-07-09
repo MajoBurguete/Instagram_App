@@ -107,7 +107,7 @@ public class HomeFragment extends Fragment implements PostAdapter.OnClickListene
 
     @Override
     public void onCommentsClick(int position) {
-        Fragment fragment = new CommentsFragment();
+        Fragment fragment = new CommentsFragment(postsA.get(position));
         getChildFragmentManager().beginTransaction().replace(R.id.childLayout, fragment).commit();
     }
 }
