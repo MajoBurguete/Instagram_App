@@ -17,6 +17,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.instagramapp.Comment;
 import com.example.instagramapp.CommentAdapter;
 import com.example.instagramapp.Post;
@@ -26,6 +27,7 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import org.w3c.dom.Text;
 
@@ -35,6 +37,7 @@ import java.util.List;
 public class CommentsFragment extends Fragment {
 
     private String TAG = "CommentsFragment";
+    public static final String KEY_PROFILE = "profilePic";
     RecyclerView rvComments;
     List<Comment> commentList;
     CommentAdapter commentAdapter;
@@ -65,6 +68,9 @@ public class CommentsFragment extends Fragment {
         etComment = view.findViewById(R.id.etComment);
         ibSendCom = view.findViewById(R.id.ibSendCom);
         btnCloseCom = view.findViewById(R.id.btnCloseCom);
+        ParseUser user = ParseUser.getCurrentUser();
+        Glide.with(getContext()).load(user.getParseFile(KEY_PROFILE).getUrl()).circleCrop().into(ivUserPic);
+
 
         btnCloseCom.setOnClickListener(new View.OnClickListener() {
             @Override
