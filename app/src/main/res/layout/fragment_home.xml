@@ -21,4 +21,12 @@
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
+    <FrameLayout
+        android:id="@+id/childLayout"
+        android:layout_width="300dp"
+        android:layout_height="400dp"
+        android:layout_gravity="center">
+
+    </FrameLayout>
+
 </FrameLayout>
