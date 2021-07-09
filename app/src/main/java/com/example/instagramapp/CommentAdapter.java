@@ -44,6 +44,18 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         return rvComments.size();
     }
 
+    public void clear() {
+        rvComments.clear();
+        notifyDataSetChanged();
+    }
+
+    // Add a list of items -- change to type used
+    public void addAll(List<Comment> list) {
+        rvComments.addAll(list);
+        notifyDataSetChanged();
+    }
+
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView ivPicture;
