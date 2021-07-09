@@ -59,6 +59,9 @@ public class ProfileFragment extends Fragment implements PostAdapter.OnClickList
         tvProfileDesc = view.findViewById(R.id.tvProfileDesc);
         swipeContainer = view.findViewById(R.id.scProfile);
 
+        // Initialize post array
+        postsUser = new ArrayList<>();
+
         // Get the reference from the recycler view in the profile layout
         rvPosts = view.findViewById(R.id.rvUserPosts);
 
@@ -69,9 +72,6 @@ public class ProfileFragment extends Fragment implements PostAdapter.OnClickList
         rvPosts.setLayoutManager(new LinearLayoutManager(getContext()));
         rvPosts.setAdapter(adapter);
 
-        // Initialize post array
-        postsUser = new ArrayList<>();
-
         // Refresh listener
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -81,6 +81,7 @@ public class ProfileFragment extends Fragment implements PostAdapter.OnClickList
             }
         });
 
+        queryPosts();
     }
 
     //Getting all of the posts
@@ -97,9 +98,11 @@ public class ProfileFragment extends Fragment implements PostAdapter.OnClickList
                     Log.e(TAG, "Issue with getting posts", e);
                     return;
                 }
+                adapter.clear();
                 for (Post post : posts){
                     Log.i(TAG, "Post: " + post.getDescription() + ", Username: " + post.getUser().getUsername());
                 }
+                adapter.addAll(posts);
             }
         });
     }
