@@ -13,6 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.parse.ParseObject;
+import com.parse.ParseUser;
 
 import java.util.Date;
 import java.util.List;
@@ -80,6 +82,8 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         }
 
         public void bind(Comment comment) {
+            ParseUser user = ParseUser.getCurrentUser();
+            Glide.with(context).load(user.getParseFile(KEY_PROFILE).getUrl()).circleCrop().into(ivUserPic);
             tvUser.setText(comment.getUser().getUsername());
             Glide.with(context).load(comment.getUser().getParseFile(KEY_PROFILE).getUrl()).circleCrop().into(ivPicture);
             tvComment.setText(comment.getComment());
