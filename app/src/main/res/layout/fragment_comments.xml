@@ -20,7 +20,7 @@
                 android:id="@+id/rvComments"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_above="@id/imageView"
+                android:layout_above="@id/ivUserPic"
                 android:layout_below="@id/btnCloseCom"
                 android:layout_marginBottom="5dp" />
 
@@ -34,7 +34,7 @@
                 android:tint="@color/blueI" />
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/ivUserPic"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_alignParentStart="true"
@@ -44,7 +44,7 @@
                 tools:src="@tools:sample/avatars" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName"
+                android:id="@+id/etComment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/rvComments"
@@ -53,10 +53,10 @@
                 android:layout_marginTop="0dp"
                 android:layout_marginEnd="5dp"
                 android:layout_marginBottom="2dp"
-                android:layout_toStartOf="@+id/imageButton"
-                android:layout_toEndOf="@+id/imageView"
+                android:layout_toStartOf="@+id/ibSendCom"
+                android:layout_toEndOf="@+id/ivUserPic"
                 android:ems="10"
-                android:hint="Add comment..."
+                android:hint="@string/add_comment"
                 android:inputType="textPersonName"
                 android:textColor="@color/white"
                 android:textColorHighlight="@color/blueI"
@@ -66,7 +66,7 @@
                 android:textSize="12sp" />
 
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/ibSendCom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
