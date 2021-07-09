@@ -55,5 +55,13 @@ public class ProfileFragment extends Fragment {
 
         // Initialize post array
         postsUser = new ArrayList<>();
+
+        // Refresh listener
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+            }
+        });
+
     }
 }
