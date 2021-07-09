@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +28,7 @@ public class ProfileFragment extends Fragment {
     TextView tvProfileDesc;
     RecyclerView rvPosts;
     List<Post> postsUser;
+    private SwipeRefreshLayout swipeContainer;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -46,6 +48,7 @@ public class ProfileFragment extends Fragment {
         tvNameP = view.findViewById(R.id.tvNameP);
         tvProfileName = view.findViewById(R.id.tvProfileName);
         tvProfileDesc = view.findViewById(R.id.tvProfileDesc);
+        swipeContainer = view.findViewById(R.id.scProfile);
 
         // Get the reference from the recycler view in the profile layout
         rvPosts = view.findViewById(R.id.rvUserPosts);
