@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.instagramapp.Comment;
@@ -56,6 +57,9 @@ public class CommentsFragment extends Fragment {
         // Creating the adapter
         commentAdapter = new CommentAdapter(getContext(), commentList);
 
+        // Defining the recycler view adapter and layout manager
+        rvComments.setAdapter(commentAdapter);
+        rvComments.setLayoutManager(new LinearLayoutManager(getContext()));
 
         queryComments();
     }
