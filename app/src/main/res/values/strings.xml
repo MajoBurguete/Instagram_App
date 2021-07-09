@@ -3,7 +3,7 @@
     <string name="username">username</string>
     <string name="password">password</string>
     <string name="login">login</string>
-    <string name="logout">logout</string>
+    <string name="logout">Logout</string>
     <string name="sign_up">Sign up</string>
     <string name="photo">photo</string>
     <!-- TODO: Remove or change this placeholder text -->
