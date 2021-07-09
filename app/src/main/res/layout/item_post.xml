@@ -72,9 +72,9 @@
         android:layout_marginTop="6dp"
         android:layout_marginBottom="10dp"
         android:clickable="true"
+        android:text="@string/comments"
         android:textColor="@color/white"
-        android:textStyle="italic"
-        tools:text="@string/comments" />
+        android:textStyle="italic" />
 
     <TextView
         android:id="@+id/tvTime"
