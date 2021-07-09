@@ -9,6 +9,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:cardBackgroundColor="@color/black"
         app:cardCornerRadius="10dp">
 
         <RelativeLayout
@@ -19,7 +20,9 @@
                 android:id="@+id/rvComments"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@id/btnCloseCom" />
+                android:layout_above="@id/imageView"
+                android:layout_below="@id/btnCloseCom"
+                android:layout_marginBottom="5dp" />
 
             <ImageButton
                 android:id="@+id/btnCloseCom"
@@ -29,6 +32,49 @@
                 android:background="@color/transparent"
                 android:src="@android:drawable/ic_delete"
                 android:tint="@color/blueI" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="5dp"
+                tools:src="@tools:sample/avatars" />
+
+            <EditText
+                android:id="@+id/editTextTextPersonName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rvComments"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="2dp"
+                android:layout_toStartOf="@+id/imageButton"
+                android:layout_toEndOf="@+id/imageView"
+                android:ems="10"
+                android:hint="Add comment..."
+                android:inputType="textPersonName"
+                android:textColor="@color/white"
+                android:textColorHighlight="@color/blueI"
+                android:textColorHint="@android:color/darker_gray"
+                android:textColorLink="@color/blueI"
+                android:textCursorDrawable="@color/blueI"
+                android:textSize="12sp" />
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="14dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/transparent"
+                android:src="@drawable/ic_direct" />
 
         </RelativeLayout>
 
