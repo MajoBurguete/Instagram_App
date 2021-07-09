@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.instagramapp.Post;
 import com.example.instagramapp.PostAdapter;
 import com.example.instagramapp.R;
@@ -30,6 +31,9 @@ import java.util.List;
 public class ProfileFragment extends Fragment implements PostAdapter.OnClickListener{
 
     private String TAG = "ProfileFragment";
+    public static final String KEY_PROFILE = "profilePic";
+    public static final String KEY_NAME = "name";
+    public static final String KEY_PROFILEDESC = "profileDescription";
     ImageView ivProfPict;
     TextView tvProfileName;
     TextView tvNameP;
@@ -58,6 +62,14 @@ public class ProfileFragment extends Fragment implements PostAdapter.OnClickList
         tvProfileName = view.findViewById(R.id.tvProfileName);
         tvProfileDesc = view.findViewById(R.id.tvProfileDesc);
         swipeContainer = view.findViewById(R.id.scProfile);
+
+        // Set the user's data
+        ParseUser user = ParseUser.getCurrentUser();
+        Glide.with(getContext()).load(user.getParseFile(KEY_PROFILE).getUrl()).circleCrop().into(ivProfPict);
+        tvNameP.setText(user.getString(KEY_NAME));
+        tvProfileName.setText(user.getUsername());
+        tvProfileDesc.setText(user.getString(KEY_PROFILEDESC));
+
 
         // Initialize post array
         postsUser = new ArrayList<>();
