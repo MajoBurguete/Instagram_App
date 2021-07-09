@@ -3,7 +3,9 @@ package com.example.instagramapp;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.ImageDecoder;
 import android.net.Uri;
@@ -20,18 +22,23 @@ import android.widget.Toast;
 
 import com.example.instagramapp.databinding.ActivitySignupBinding;
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 import com.parse.SignUpCallback;
 
 import org.parceler.Parcels;
 
+import java.io.File;
 import java.io.IOException;
 
 public class SignupActivity extends AppCompatActivity {
 
     private String TAG = "SignupActivity";
     public final static int PICK_PHOTO_CODE = 27;
+    private ParseFile photoFile;
     ImageButton ibProfile;
+    public static final String KEY_PROFILE = "profilePic";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +70,6 @@ public class SignupActivity extends AppCompatActivity {
                 user.setUsername(username);
                 user.setPassword(password);
                 user.setEmail(email);
-
                 //Invoke signUpInBackground
                 user.signUpInBackground(new SignUpCallback() {
                     @Override
@@ -80,6 +86,33 @@ public class SignupActivity extends AppCompatActivity {
                         finish();
                     }
                 });
+                /*photoFile.saveInBackground(new SaveCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        if( e == null){
+                            user.put(KEY_PROFILE, photoFile);
+
+                            //Invoke signUpInBackground
+                            user.signUpInBackground(new SignUpCallback() {
+                                @Override
+                                public void done(ParseException e) {
+                                    if (e != null){
+                                        Toast.makeText(SignupActivity.this, "Failed to signup, try again!", Toast.LENGTH_LONG).show();
+                                        Log.e(TAG, "Failed to signup", e);
+                                        return;
+                                    }
+                                    Intent result = new Intent();
+                                    result.putExtra("username", username);
+                                    result.putExtra("password", password);
+                                    setResult(RESULT_OK,result);
+                                    finish();
+                                }
+                            });
+                        } else {
+                            Log.e(TAG, "Error while saving the image", e);
+                        }
+                    }
+                });*/
             }
         });
 
@@ -129,11 +162,30 @@ public class SignupActivity extends AppCompatActivity {
         if ((data != null) && requestCode == PICK_PHOTO_CODE) {
             Uri photoUri = data.getData();
 
+            String realPath = getRealPathFromUri(this,photoUri);
+            photoFile = new ParseFile(new File(realPath));
+
             // Load the image located at photoUri into selectedImage
             Bitmap selectedImage = loadFromUri(photoUri);
 
             // Load the selected image into a preview
             ibProfile.setImageBitmap(selectedImage);
+        }
+    }
+
+    //https://stackoverflow.com/questions/20028319/how-to-convert-content-media-external-images-media-y-to-file-storage-sdc
+    public static String getRealPathFromUri(Context context, Uri contentUri) {
+        Cursor cursor = null;
+        try {
+            String[] proj = { MediaStore.Images.Media.DATA };
+            cursor = context.getContentResolver().query(contentUri, proj, null, null, null);
+            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            cursor.moveToFirst();
+            return cursor.getString(column_index);
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
         }
     }
 
