@@ -25,6 +25,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
     public interface OnClickListener {
         void onLikeClick(int position);
+        void onCommentsClick(int position);
     }
 
     public PostAdapter(Context context, List<Post> rvPosts, OnClickListener clickListener) {
@@ -99,6 +100,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                 @Override
                 public void onClick(View v) {
                     interactionListener.onLikeClick(getAdapterPosition());
+                }
+            });
+
+            tvComments.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    interactionListener.onCommentsClick(getAdapterPosition());
                 }
             });
 
