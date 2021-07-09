@@ -24,6 +24,7 @@
         android:layout_marginStart="9dp"
         android:layout_marginTop="14dp"
         android:layout_toEndOf="@+id/ivPPicture"
+        android:textColor="@color/white"
         android:textSize="12sp"
         tools:text="doreb" />
 
@@ -36,6 +37,7 @@
         android:layout_marginTop="6dp"
         android:layout_marginBottom="5dp"
         android:layout_toEndOf="@+id/ivPPicture"
+        android:textColor="@color/white"
         android:textSize="10sp"
         tools:text="6h" />
 
@@ -47,6 +49,7 @@
         android:layout_marginStart="12dp"
         android:layout_marginTop="14dp"
         android:layout_toEndOf="@+id/tvUserC"
+        android:textColor="@color/white"
         android:textSize="12sp"
         tools:text="Hello!" />
 </RelativeLayout>
