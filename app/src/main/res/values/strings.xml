@@ -16,4 +16,5 @@
     <string name="posts">Posts</string>
     <string name="name">Name</string>
     <string name="edit_profile">Edit profile</string>
+    <string name="save">save</string>
 </resources>
