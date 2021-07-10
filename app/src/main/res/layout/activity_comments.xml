@@ -19,10 +19,12 @@
         android:id="@+id/btnCloseCom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:background="@color/transparent"
-        android:src="@android:drawable/ic_delete"
-        android:tint="@color/blueI" />
+        android:src="@drawable/ic_arrow" />
 
     <ImageView
         android:id="@+id/ivUserPic"
