@@ -12,11 +12,12 @@
         android:allowBackup="true"
         android:icon="@drawable/icon"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.InstagramApp"
-        android:requestLegacyExternalStorage="true">
-        <activity android:name=".SignupActivity"></activity>
+        android:theme="@style/Theme.InstagramApp">
+        <activity android:name=".CommentsActivity"></activity>
+        <activity android:name=".SignupActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
