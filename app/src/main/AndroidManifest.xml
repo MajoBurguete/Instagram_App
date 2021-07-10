@@ -16,7 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.InstagramApp">
-        <activity android:name=".CommentsActivity"></activity>
+        <activity android:name=".EditActivity"></activity>
+        <activity android:name=".CommentsActivity" />
         <activity android:name=".SignupActivity" />
 
         <provider
