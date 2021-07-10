@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
@@ -18,6 +19,7 @@ import com.parse.SaveCallback;
 public class EditActivity extends AppCompatActivity {
 
     public static final String KEY_PROFILEDESC = "profileDescription";
+    public static final String KEY_PROFILE = "profilePic";
     private String TAG = "EditActivity";
     ImageView ivUserPict;
     EditText etDescEdit;
@@ -35,6 +37,8 @@ public class EditActivity extends AppCompatActivity {
         ibClose = findViewById(R.id.ibClose);
 
         ParseUser user = ParseUser.getCurrentUser();
+
+        Glide.with(this).load(user.getParseFile(KEY_PROFILE).getUrl()).circleCrop().into(ivUserPict);
 
         etDescEdit.setText(user.getString(KEY_PROFILEDESC));
 
