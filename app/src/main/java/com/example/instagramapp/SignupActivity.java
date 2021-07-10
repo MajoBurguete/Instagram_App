@@ -40,6 +40,7 @@ public class SignupActivity extends AppCompatActivity {
     private ParseFile photoFile;
     ImageButton ibProfile;
     public static final String KEY_PROFILE = "profilePic";
+    public static final String KEY_NAME = "name";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,9 +58,10 @@ public class SignupActivity extends AppCompatActivity {
                 String username = binding.etUserSign.getText().toString();
                 String password = binding.etPassSign.getText().toString();
                 String email = binding.etEmail.getText().toString();
+                String name = binding.etName.getText().toString();
 
                 // Check if everything is complete
-                if (username.isEmpty() || password.isEmpty() || email.isEmpty()) {
+                if (username.isEmpty() || password.isEmpty() || email.isEmpty() || name.isEmpty()) {
                     Toast.makeText(SignupActivity.this, "There's data missing, please fill everything!", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -71,6 +73,7 @@ public class SignupActivity extends AppCompatActivity {
                 user.setUsername(username);
                 user.setPassword(password);
                 user.setEmail(email);
+                user.put(KEY_NAME, name);
                 //Invoke signUpInBackground
                 user.signUpInBackground(new SignUpCallback() {
                     @Override
