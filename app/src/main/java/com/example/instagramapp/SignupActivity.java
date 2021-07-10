@@ -150,14 +150,6 @@ public class SignupActivity extends AppCompatActivity {
             Uri photoUri = data.getData();
             String photoPath = photoUri.getPath();
 
-            String realPath = getRealPathFromUri(this,photoUri);
-            File localFile = new File(realPath);
-            boolean canRead = localFile.canRead();
-            String uriToString = photoUri.toString();
-            File urllocalFile = new File(uriToString);
-            canRead = urllocalFile.canRead();
-
-
             // Load the image located at photoUri into selectedImage
             Bitmap selectedImage = loadFromUri(photoUri);
 
@@ -169,22 +161,6 @@ public class SignupActivity extends AppCompatActivity {
 
             // Load the selected image into a preview
             ibProfile.setImageBitmap(selectedImage);
-        }
-    }
-
-    //https://stackoverflow.com/questions/20028319/how-to-convert-content-media-external-images-media-y-to-file-storage-sdc
-    public static String getRealPathFromUri(Context context, Uri contentUri) {
-        Cursor cursor = null;
-        try {
-            String[] proj = { MediaStore.Images.Media.DATA };
-            cursor = context.getContentResolver().query(contentUri, proj, null, null, null);
-            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-            cursor.moveToFirst();
-            return cursor.getString(column_index);
-        } finally {
-            if (cursor != null) {
-                cursor.close();
-            }
         }
     }
 
