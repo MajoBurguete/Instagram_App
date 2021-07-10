@@ -14,4 +14,5 @@
     <string name="new_post">New post</string>
     <string name="profile">Profile</string>
     <string name="posts">Posts</string>
+    <string name="name">Name</string>
 </resources>
