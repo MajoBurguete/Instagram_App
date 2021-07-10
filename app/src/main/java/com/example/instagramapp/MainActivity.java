@@ -57,6 +57,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item){
+        if (item.getItemId() == R.id.btnEditP){
+            Intent i = new Intent(this, EditActivity.class);
+            startActivity(i);
+        }
         return true;
     }
 
