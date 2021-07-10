@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -14,7 +13,6 @@ import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 
-import org.parceler.Parcels;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -33,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
             goMainActivity();
         }
 
-        //Setting the on click listener for th login button
+        //Setting the on click listener for the login button
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

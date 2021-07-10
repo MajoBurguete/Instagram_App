@@ -19,7 +19,6 @@ import com.example.instagramapp.CommentsActivity;
 import com.example.instagramapp.Post;
 import com.example.instagramapp.PostAdapter;
 import com.example.instagramapp.R;
-import com.example.instagramapp.databinding.FragmentHomeBinding;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -50,7 +49,6 @@ public class HomeFragment extends Fragment implements PostAdapter.OnClickListene
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        FragmentHomeBinding binding = FragmentHomeBinding.inflate(getLayoutInflater());
 
         // Defining the recycler view
         rvPosts = view.findViewById(R.id.rvPosts);
