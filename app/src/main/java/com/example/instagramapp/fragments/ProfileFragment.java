@@ -1,5 +1,6 @@
 package com.example.instagramapp.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.instagramapp.CommentsActivity;
 import com.example.instagramapp.Post;
 import com.example.instagramapp.PostAdapter;
 import com.example.instagramapp.R;
@@ -24,6 +26,8 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -129,11 +133,13 @@ public class ProfileFragment extends Fragment implements PostAdapter.OnClickList
 
     @Override
     public void onCommentsClick(int position) {
-
+        Intent intent = new Intent(getContext(), CommentsActivity.class);
+        intent.putExtra("post", Parcels.wrap(postsUser.get(position)));
+        startActivity(intent);
     }
 
     @Override
     public void onCommentButtonClick(int position) {
-
+        onCommentsClick(position);
     }
 }

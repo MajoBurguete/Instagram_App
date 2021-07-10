@@ -1,5 +1,6 @@
 package com.example.instagramapp.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.instagramapp.CommentsActivity;
 import com.example.instagramapp.Post;
 import com.example.instagramapp.PostAdapter;
 import com.example.instagramapp.R;
@@ -21,6 +23,8 @@ import com.example.instagramapp.databinding.FragmentHomeBinding;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -107,8 +111,9 @@ public class HomeFragment extends Fragment implements PostAdapter.OnClickListene
 
     @Override
     public void onCommentsClick(int position) {
-        Fragment fragment = new CommentsFragment(postsA.get(position));
-        getChildFragmentManager().beginTransaction().replace(R.id.childLayout, fragment).commit();
+        Intent intent = new Intent(getContext(), CommentsActivity.class);
+        intent.putExtra("post", Parcels.wrap(postsA.get(position)));
+        startActivity(intent);
     }
 
     @Override
